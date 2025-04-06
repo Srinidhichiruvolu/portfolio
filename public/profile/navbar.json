@@ -1,0 +1,31 @@
+{
+    "logo" : {
+        "source": "images/logo copy.jpeg",
+        "height" : 45,
+        "width" : 50
+    },
+    "sections": [
+        {
+            "title": "Home",
+            "href": "/"
+        },
+        {
+            "title": "About",
+            "href": "/about"
+        },
+        {
+            "title": "Skills",
+            "href": "/skills"
+        },
+        {
+            "title": "Education",
+            "href": "/education"
+        },
+        {
+            "title": "Resume",
+            "href": "https://drive.google.com/file/d/1ELB6JXfAIgFg3s2ePBB8jIe9bd90bqMf/view?usp=sharing",
+            "type": "link"
+        }
+    ]
+
+}

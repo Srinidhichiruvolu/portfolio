@@ -1,0 +1,16 @@
+{
+    "social": [
+        {
+            "network" : "linkedin",
+            "href": "https://www.linkedin.com/in/srinidhi-chiruvolu/"
+        },
+        {
+            "network" : "github",
+            "href": "https://github.com/Srinidhichiruvolu"
+        },
+        {
+            "network" : "email",
+            "href": "mailto:chiruvolusrinidhi2@gmail.com"
+        }
+    ]
+}

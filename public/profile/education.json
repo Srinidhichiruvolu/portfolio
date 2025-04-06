@@ -1,0 +1,23 @@
+{
+    "education":[
+        {
+            "title": "Aug 2023-May 2025",
+            "cardTitle": "Masters in Computer Science",
+            "cardSubtitle":"California State University, East Bay",
+            "cardDetailedText": "GPA - 4.0",
+            "icon" : {
+                "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/CSU_East_Bay_athletics_icon.svg/640px-CSU_East_Bay_athletics_icon.svg.png"
+            }
+        },
+        {
+            "title": "Aug 2019-july 2023",
+            "cardTitle": "B.Tech, Computer Science",
+            "cardSubtitle":"Sri Indu Institute of Engineering and Technology",
+            "cardDetailedText": "CGPA - 8.1",
+            "icon" : {
+                "src": "https://upload.wikimedia.org/wikipedia/commons/9/96/Sri_Indu_College_of_Engineering_and_Technology.png"           
+        }
+    }
+        
+    ]
+}
