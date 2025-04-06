@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Chrono } from 'react-chrono';
 import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Fade from 'react-reveal';
+
 import { ThemeContext } from 'styled-components';
 import endpoints from '../constants/endpoints';
 import Header from './Header';
@@ -22,17 +22,16 @@ function Education(props) {
     })
       .then((res) => res.json())
       .then((res) => setData(res))
-      .catch((err) => err);
+      .catch((err) => console.error('Error loading education data:', err));
 
-    if (window?.innerWidth < 576) {
+    const screenWidth = window?.innerWidth;
+
+    if (screenWidth < 576) {
       setMode('VERTICAL');
-    }
-
-    if (window?.innerWidth < 576) {
       setWidth('90vw');
-    } else if (window?.innerWidth >= 576 && window?.innerWidth < 768) {
+    } else if (screenWidth < 768) {
       setWidth('90vw');
-    } else if (window?.innerWidth >= 768 && window?.innerWidth < 1024) {
+    } else if (screenWidth < 1024) {
       setWidth('75vw');
     } else {
       setWidth('50vw');
@@ -43,38 +42,41 @@ function Education(props) {
     <>
       <Header title={header} />
       {data ? (
-        <Fade>
-          <div style={{ width }} className="section-content-container">
-            <Container>
-              <Chrono
-                hideControls
-                allowDynamicUpdate
-                useReadMore={false}
-                items={data.education}
-                cardHeight={250}
-                mode={mode}
-                theme={{
-                  primary: theme.accentColor,
-                  secondary: theme.accentColor,
-                  cardBgColor: theme.chronoTheme.cardBgColor,
-                  cardForeColor: theme.chronoTheme.cardForeColor,
-                  titleColor: theme.chronoTheme.titleColor,
-                }}
-              >
-                <div className="chrono-icons">
-                  {data.education.map((education) => (education.icon ? (
+        <div style={{ width }} className="section-content-container">
+          <Container>
+            <Chrono
+              hideControls
+              allowDynamicUpdate
+              useReadMore={false}
+              items={data.education}
+              cardHeight={250}
+              mode={mode}
+              theme={{
+                primary: theme.accentColor,
+                secondary: theme.accentColor,
+                cardBgColor: theme.chronoTheme.cardBgColor,
+                cardForeColor: theme.chronoTheme.cardForeColor,
+                titleColor: theme.chronoTheme.titleColor,
+              }}
+            >
+              <div className="chrono-icons">
+                {data.education.map((education) => {
+                  if (!education.icon) return null;
+                  return (
                     <img
                       key={education.icon.src}
                       src={education.icon.src}
-                      alt={education.icon.alt}
+                      alt={education.icon.alt || 'Education Icon'}
                     />
-                  ) : null))}
-                </div>
-              </Chrono>
-            </Container>
-          </div>
-        </Fade>
-      ) : <FallbackSpinner /> }
+                  );
+                })}
+              </div>
+            </Chrono>
+          </Container>
+        </div>
+      ) : (
+        <FallbackSpinner />
+      )}
     </>
   );
 }

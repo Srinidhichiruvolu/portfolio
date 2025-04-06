@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
-import Fade from 'react-reveal';
 import { Container } from 'react-bootstrap';
+
 import Header from './Header';
 import endpoints from '../constants/endpoints';
 import FallbackSpinner from './FallbackSpinner';
@@ -19,15 +19,8 @@ const styles = {
   },
 };
 
-function Skills(props) {
-  const { header } = props;
+function Skills({ header }) {
   const [data, setData] = useState(null);
-
-  const renderSkillsIntro = (intro) => (
-    <h4 style={styles.introTextContainer}>
-      <ReactMarkdown children={intro} />
-    </h4>
-  );
 
   useEffect(() => {
     fetch(endpoints.skills, {
@@ -35,37 +28,43 @@ function Skills(props) {
     })
       .then((res) => res.json())
       .then((res) => setData(res))
-      .catch((err) => err);
+      .catch((err) => console.error('Error loading skills data:', err));
   }, []);
+
+  const renderSkillsIntro = (intro) => (
+    <h4 style={styles.introTextContainer}>
+      <ReactMarkdown children={intro} />
+    </h4>
+  );
 
   return (
     <>
       <Header title={header} />
       {data ? (
-        <Fade>
-          <div className="section-content-container">
-            <Container>
-              {renderSkillsIntro(data.intro)}
-              {data.skills?.map((rows) => (
-                <div key={rows.title}>
-                  <br />
-                  <h3>{rows.title}</h3>
-                  {rows.items.map((item) => (
-                    <div key={item.title} style={{ display: 'inline-block' }}>
-                      <img
-                        style={styles.iconStyle}
-                        src={item.icon}
-                        alt={item.title}
-                      />
-                      <p>{item.title}</p>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </Container>
-          </div>
-        </Fade>
-      ) : <FallbackSpinner /> }
+        <div className="section-content-container">
+          <Container>
+            {renderSkillsIntro(data.intro)}
+            {data.skills?.map((rows) => (
+              <div key={rows.title}>
+                <br />
+                <h3>{rows.title}</h3>
+                {rows.items.map((item) => (
+                  <div key={item.title} style={{ display: 'inline-block' }}>
+                    <img
+                      style={styles.iconStyle}
+                      src={item.icon}
+                      alt={item.title}
+                    />
+                    <p>{item.title}</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </Container>
+        </div>
+      ) : (
+        <FallbackSpinner />
+      )}
     </>
   );
 }
