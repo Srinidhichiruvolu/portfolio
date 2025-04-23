@@ -10,6 +10,10 @@
                     "title": "Java"
                 },
                 {
+                    "icon": "images/skills/python copy.jpeg",
+                    "title": "python"
+                },
+                {
                     "icon": "images/skills/js.png",
                     "title": "JavaScript"
                 },
@@ -26,6 +30,24 @@
                     "title": "CSS"
                 }
         ]},
+        {
+            "title" : "Frameworks & Technologies",
+            "items": [
+                {   
+                    "icon":"images/skills/springboot copy.jpeg",
+                    "title":"spring boot"
+
+                },
+                {
+                    "icon": "images/skills/react copy.jpeg",
+                    "title": "react"
+                },
+                {
+                    "icon": "images/skills/nodejs.png",
+                    "title": "node.js"
+                }
+            ]
+    },
         {
             "title" : "Tools & Platforms",
             "items": [
